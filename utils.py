@@ -10,6 +10,10 @@ def getSVG(count, width, recWidth, textX, url):
     """ Put the count in the pre-defined svg and return it """
     return config.SVG_TEMPLATE.format(count=count, width=width, recWidth=recWidth, textX=textX, url=url)
 
+def getAlternativeSVG(count, url):
+    """ Put the count in the pre-defined svg and return it """
+    return config.SVG_TEMPLATE_2.format(count=count, url=url)
+
 def getURL(request):
     """ Get the url out of a request either passed as a query parameter or taken from the referrer. Remove any query """
     url = request.args.get('url', request.referrer)

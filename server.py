@@ -19,9 +19,9 @@ def makeTextRequest(count, url, cookie_required):
         response.set_cookie(url, utils.getCookieValueToSet(), expires=utils.getExpiration())
     return response
 
-def makeSVGRequest(count, url, cookie_required):
+def makeSVGRequest(count, url, cookie_required, alternative):
     sizes = utils.calculateSVGSizes(count)
-    svg = utils.getSVG(count, sizes['width'], sizes['recWidth'], sizes['textX'], url).encode('utf-8')
+    svg = utils.getSVG(count, sizes['width'], sizes['recWidth'], sizes['textX'], url).encode('utf-8') if alternative == False else utils.getAlternativeSVG(count, url)
     response = make_response(svg, 200)
     response.content_type = 'image/svg+xml'
     if cookie_required:
@@ -64,7 +64,7 @@ def countTagRoute():
         db_connection.addView(connection, url)
     count = db_connection.getCount(connection, url)
 
-    return makeSVGRequest(count, url, not valid_cookie)
+    return makeSVGRequest(count, url, not valid_cookie, False)
 
 @app.route("/nocount")
 def nocountRoute():
@@ -88,7 +88,7 @@ def nocountTagRoute():
     connection = db_connection.get_connection()
     count = db_connection.getCount(connection, url)
 
-    return makeSVGRequest(count, url, False)
+    return makeSVGRequest(count, url, False, True)
 
 @app.after_request
 def add_header(r):

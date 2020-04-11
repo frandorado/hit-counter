@@ -15,6 +15,16 @@ SVG_TEMPLATE = """<?xml version="1.0"?>
 	</g>
 <!-- This count is for the url: {url} -->
 </svg>"""
+SVG_TEMPLATE_2 = """<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="20">
+<rect x="0" width="50" height="20" fill="#555"/>
+<rect rx="3" width="50" height="20" fill="transparent"/>
+	<g fill="#fff" text-anchor="middle"
+    font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+	    <text x="25" y="14">{count}</text>
+	</g>
+<!-- This count is for the url: {url} -->
+</svg>"""
 # Length of cookie value (stored client side). Literally just the cookie size.
 RANDOM_VALUE_LENGTH = 12
 # Message to return on a 404
