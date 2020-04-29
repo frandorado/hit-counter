@@ -8,7 +8,7 @@ import time
 
 def getSVG(count, width, recWidth, textX, url):
     """ Put the count in the pre-defined svg and return it """
-    return config.SVG_TEMPLATE.format(count=count, width=width, recWidth=recWidth, textX=textX, url=url)
+    return config.SVG_TEMPLATE_2.format(count=count, width=width, recWidth=recWidth, textX=textX, url=url)
 
 def getAlternativeSVG(count, url):
     """ Put the count in the pre-defined svg and return it """
